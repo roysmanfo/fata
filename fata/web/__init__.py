@@ -1,4 +1,4 @@
-from adshied.web.backend import router
+from fata.web.backend import router
 
 
 def start_web_interface(port: int = 5000):

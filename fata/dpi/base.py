@@ -15,15 +15,18 @@ class Inspector:
         self.name = self.__class__.__name__
         """The name of the inspector."""
 
+        self.url_patterns = []
+        """List of URL regex patterns that trigger an inspection from this Inspector."""
+
         self.current_flow: http.HTTPFlow = None
         """The current flow being inspected."""
         
         self.aggressive = aggressive
         """If true, will also modify the response to remove ads, otherwise just detect them."""
 
-        self.logger = logging.getLogger("adshied")
+        self.logger = logging.getLogger("fata")
 
-    def inspect(self, flow: http.HTTPFlow) -> bool:
+    def inspect_request(self, flow: http.HTTPFlow) -> bool:
         """
         Inspect the given data.
 

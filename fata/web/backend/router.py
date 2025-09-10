@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, send_from_directory
+from flask import Flask, send_from_directory
 from pathlib import Path
 
 # Path to Vite build directory
@@ -8,11 +8,11 @@ app = Flask(__name__, static_folder=str(BUILD_DIR), static_url_path="/")
 
 @app.route("/api/stats")
 def stats():
-    return jsonify({
+    return {
         "blocked_ads": 123,
         "total_requests": 456,
         "unique_domains": 42
-    })
+    }
 
 # Serve Vite frontend
 @app.route("/", defaults={"path": ""})

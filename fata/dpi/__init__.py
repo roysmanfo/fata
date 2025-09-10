@@ -10,7 +10,10 @@ __all__ = [
     "YTInspector",
 ]
 
+import logging
+import re
 from mitmproxy import http
+
 from .yt import YTInspector
 
 
@@ -29,6 +32,12 @@ class DPI:
             YTInspector(aggressive=aggressive),
         }
 
+        logger = logging.getLogger("fata")
+
+        for inspector in self.inspectors:
+            logger.debug("[DPI] loaded %s", inspector.name)
+
+
     def inspect(self, flow: http.HTTPFlow):
         """
         Analyze the given HTTP flow for ads and unwanted content.
@@ -37,9 +46,16 @@ class DPI:
             flow (http.HTTPFlow): The HTTP flow to analyze.
         """
         for inspector in self.inspectors:
-            try:
-                if res := inspector.inspect(flow):
-                    return res
-            except:
-                # TODO: log this error, may help in debugging crashes
-                pass
+
+            if any([
+                (re.match(pattern, flow.request.url) or 
+                    re.match(pattern, flow.request.pretty_url))
+                for pattern in inspector.url_patterns
+            ]):
+
+                try:
+                    if res := inspector.inspect(flow):
+                        return res
+                except:
+                    # TODO: log this error, may help in debugging crashes
+                    pass
