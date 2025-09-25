@@ -55,4 +55,6 @@ The whole process is quite simple
     - this will automatically open the web interface in the browser
 > [!NOTE]
 > You will need to install mitmproxy's certificate to intercept HTTPS traffic.  
-> To do so, after you run make, visit `mitm.it` and install the certificate for your device.
+> To do so, after you run make, visit `mitm.it` and install the certificate for your device.  
+> We also provide certificates available in the `certs/` folder  
+> (but still, informations on how to install them can be found on `mitm.it`).
