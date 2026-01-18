@@ -179076,14 +179076,7 @@ modalina.jp##+js(aopr, AdBlockLimitation)
 ! Title: Brave Specific
 ! Expires: 2 days
 
-! Specific filters (Tracking or ads) for Brave
-||0.0.0.0^$third-party,domain=~[::]|~[::ffff:0:0]
-||[::]^$third-party,domain=~0.0.0.0|~[::ffff:0:0]
-||[::ffff:0:0]^$third-party,domain=~0.0.0.0|~[::]
-||localhost^$third-party,domain=~127.0.0.1|~[::1]|~[::ffff:7f00:1]
-||127.0.0.1^$third-party,domain=~localhost|~[::1]|~[::ffff:7f00:1]
-||[::1]^$third-party,domain=~localhost|~127.0.0.1|~[::ffff:7f00:1]
-||[::ffff:7f00:1]^$third-party,domain=~localhost|~127.0.0.1|~[::1]
+
 
 ! brave.com specfic filters
 @@||ads.brave.software^$first-party
