@@ -1,0 +1,23 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      time: "08:00"
+      timezone: "Etc/GMT"
+    target-branch: "main"
+    commit-message:
+      prefix: "[pip] "
+      include: "scope"
+  
+  - package-ecosystem: "npm"
+    directory: "/fata/web/frontend"
+    schedule:
+      interval: "weekly"
+      time: "08:00"
+      timezone: "Etc/GMT"
+    target-branch: "main"
+    commit-message:
+      prefix: "[npm] "
+      include: "scope"
